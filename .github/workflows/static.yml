@@ -20,6 +20,12 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    
+    # Aquí le decimos a GitHub que todos los comandos se ejecuten dentro de 'frontend'
+    defaults:
+      run:
+        working-directory: ./frontend
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,10 +34,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          # Eliminado por completo cualquier parámetro de cache que exija lockfiles
+          cache: 'npm'
+          cache-dependency-path: ./frontend/package-lock.json
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build project
         run: npm run build
@@ -42,7 +49,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist'
+          # Buscamos la carpeta dist dentro de frontend
+          path: './frontend/dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
