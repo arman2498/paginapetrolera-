@@ -1,0 +1,1487 @@
+/* App.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.app {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: transparent;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 5%;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+/* --- ESTILOS BASE DEL NAVBAR (Asegúrate de tener la transición) --- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  transition: transform 0.4s ease-in-out, background-color 0.3s ease;
+  z-index: 1000;
+}
+
+/* --- CLASES INTELIGENTES DE SCROLL --- */
+
+/* Cuando se debe mostrar (posición natural) */
+.navbar.nav-show {
+  transform: translateY(0);
+}
+
+/* Cuando se debe ocultar (se desliza hacia arriba fuera de la pantalla) */
+.navbar.nav-hidden {
+  transform: translateY(-100%);
+}
+.navbar-scrolled {
+  background: rgba(0, 0, 0, 0.0);
+  padding: 0.8rem 5%;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.0);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.logo-icon {
+  font-size: 2rem;
+}
+
+.logo-text {
+  color: #f0a500;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #f0a500;
+  transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.nav-links a:hover {
+  color: #f0a500;
+}
+
+/* Banner */
+/* Contenedor principal del Banner */
+.banner-video-section {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Ocupa todo el alto de la pantalla */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: #090d16; /* Color de fondo mientras carga el video */
+  font-family: 'Inter', sans-serif;
+}
+
+/* El truco para que el video actúe como fondo */
+.banner-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Recorta y ajusta el video sin perder proporciones */
+  z-index: 1;
+}
+
+/* Superposición oscura (Overlay) */
+.banner-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Mezcla un degradado en diagonal para darle dinamismo */
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85) 0%, rgba(15, 23, 42, 0.5) 100%);
+  z-index: 2;
+}
+
+/* Contenido de texto y botones sobrepuestos */
+.banner-content {
+  position: relative;
+  z-index: 3; /* Por encima del video y del overlay */
+  text-align: center;
+  max-width: 800px;
+  padding: 0 20px;
+  color: #ffffff;
+}
+
+.banner-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -1px;
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.banner-subtitle {
+  font-size: 1.25rem;
+  color: #cbd5e1;
+  line-height: 1.6;
+  margin-bottom: 40px;
+  font-weight: 400;
+  animation: fadeInUp 1s ease forwards;
+}
+
+/* Contenedor de Botones */
+.banner-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  animation: fadeInUp 1.2s ease forwards;
+}
+
+.cta-button {
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cta-button.primary {
+  background: #ff7b00;
+  border: 1px solid #ff7b00;
+  color: #ffffff;
+  box-shadow: 0 4px 15px rgba(14, 13, 12, 0.3);
+}
+
+.cta-button.primary:hover {
+  background: #e06c00;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 123, 0, 0.5);
+}
+
+.cta-button.secondary {
+  background: transparent;
+  border: 2px solid #ffffff;
+  color: #ffffff;
+}
+
+.cta-button.secondary:hover {
+  background: #ffffff;
+  color: #0f172a;
+  transform: translateY(-2px);
+}
+
+/* Animación sutil de entrada para el texto */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Optimización para pantallas móviles */
+@media (max-width: 768px) {
+  .banner-title {
+    font-size: 2.5rem;
+  }
+  .banner-subtitle {
+    font-size: 1.1rem;
+  }
+  .banner-buttons {
+    flex-direction: column;
+    gap: 15px;
+  }
+}
+@keyframes pumpMove {
+  0%, 100% { transform: rotate(-12deg); }
+  50% { transform: rotate(12deg); }
+}
+
+@keyframes rodMove {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-25px); }
+}
+
+@keyframes particleFloat {
+  0%, 100% { opacity: 0; transform: translateY(0); }
+  50% { opacity: 0.8; transform: translateY(-30px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Base de la sección con perspectiva */
+.services-section {
+  padding: 80px 20px;
+  background: #0f172a; /* Fondo oscuro industrial para resaltar el 3D */
+  color: #f8fafc;
+  font-family: 'Inter', sans-serif;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px auto;
+}
+
+.section-badge {
+  background: linear-gradient(135deg, #ff7b00, #ffae00);
+  color: #000;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 15px rgba(12, 11, 10, 0.3);
+}
+
+.section-header h2 {
+  font-size: 2.5rem;
+  margin: 20px 0 15px 0;
+  font-weight: 800;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid preparado para perspectiva 3D */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1000px; /* Crucial para el efecto 3D */
+}
+
+/* Contenedor de la Tarjeta 3D */
+.service-card-3d {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border-radius: 20px;
+  padding: 30px;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  
+  /* Estado inicial de la sombra y posición 3D */
+  transform-style: preserve-3d;
+  transform: translateY(0) rotateX(0) rotateY(0);
+  box-shadow: 
+    0 10px 30px rgba(0, 0, 0, 0.5),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+}
+
+/* Efecto Hover 3D (Elevación y Sombra Profunda) */
+.service-card-3d:hover {
+  transform: translateY(-12px) scale(1.02) rotateX(2deg);
+  border-color: rgba(255, 123, 0, 0.4);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.7),
+    0 0 30px rgba(255, 123, 0, 0.15),
+    inset 0 1px 2px rgba(255, 255, 255, 0.2);
+}
+
+/* Evita que los textos se distorsionen en el renderizado 3D */
+.card-content {
+  transform: translateZ(30px); /* Empuja el contenido ligeramente hacia adelante en el eje Z */
+}
+
+/* Contenedor del Icono con aspecto extruido */
+.service-icon-wrapper {
+  width: 65px;
+  height: 65px;
+  background: linear-gradient(135deg, #2a3b5c 0%, #1d2a44 100%);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 8px 16px rgba(0, 0, 0, 0.4),
+    inset 0 2px 4px rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.service-card-3d:hover .service-icon-wrapper {
+  background: linear-gradient(135deg, #ff7b00 0%, #ff5100 100%);
+  transform: translateZ(15px) scale(1.1);
+  box-shadow: 0 10px 25px rgba(255, 77, 0, 0.4);
+}
+
+.service-icon-svg {
+  color: #ff9d00;
+  transition: color 0.3s ease;
+}
+
+.service-card-3d:hover .service-icon-svg {
+  color: #ffffff;
+}
+
+/* Tipografías y listas */
+.service-card-3d h3 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+  color: #ffffff;
+}
+
+.service-card-3d p {
+  color: #94a3b8;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.service-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 15px;
+}
+
+.service-features li {
+  font-size: 0.88rem;
+  color: #cbd5e1;
+  margin-bottom: 10px;
+  position: relative;
+  padding-left: 20px;
+}
+
+/* Checkmark personalizado delante de los features */
+.service-features li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  color: #ff7b00;
+  font-weight: bold;
+}
+
+/* Trayectoria */
+/* Contenedor principal de la sección */
+.trajectory-section {
+  position: relative;
+  padding: 100px 20px;
+  background: radial-gradient(circle at top right, #1e293b 0%, #0f172a 100%);
+  overflow: hidden;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Encabezado */
+.section-header.light h2 {
+  font-size: 2.8rem;
+  font-weight: 800;
+  text-align: center;
+  margin-top: 15px;
+  margin-bottom: 50px;
+  background: linear-gradient(180deg, #ffffff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-badge {
+  display: block;
+  width: max-content;
+  margin: 0 auto;
+  background: rgba(255, 123, 0, 0.1);
+  border: 1px solid rgba(255, 123, 0, 0.3);
+  color: #ff7b00;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+/* Grid de contadores en perspectiva */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1200px; /* Activa el espacio tridimensional */
+}
+
+/* Ítem individual con volumen 3D */
+.stat-item-3d {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  
+  /* Comportamiento estructural 3D */
+  transform-style: preserve-3d;
+  transform: translateY(0) rotateX(0);
+  box-shadow: 
+    0 15px 35px rgba(0, 0, 0, 0.4),
+    inset 0 1px 1px rgba(255, 255, 255, 0.1);
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease, border-color 0.3s;
+}
+
+/* Animación de elevación al posar el mouse */
+.stat-item-3d:hover {
+  transform: translateY(-10px) rotateX(4deg);
+  border-color: rgba(255, 123, 0, 0.25);
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(255, 123, 0, 0.1);
+}
+
+/* Contenedor del Icono Vectorial */
+.stat-icon-wrapper {
+  width: 60px;
+  height: 60px;
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 25px;
+  transform: translateZ(20px); /* El icono sobresale un poco */
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.stat-icon-svg {
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.stat-item-3d:hover .stat-icon-wrapper {
+  background: #ff7b00;
+  transform: translateZ(35px) scale(1.05); /* En el hover, el icono viaja más hacia el frente */
+  box-shadow: 0 10px 20px rgba(255, 123, 0, 0.3);
+}
+
+.stat-item-3d:hover .stat-icon-svg {
+  color: #ffffff;
+}
+
+/* Estilos de la información de texto */
+.stat-info {
+  transform: translateZ(15px);
+}
+
+.stat-number {
+  display: block;
+  font-size: 3.2rem;
+  font-weight: 800;
+  line-height: 1;
+  color: #ffffff;
+  margin-bottom: 10px;
+  letter-spacing: -1px;
+  transition: color 0.3s ease;
+}
+
+.stat-item-3d:hover .stat-number {
+  color: #ff7b00; /* Iluminación del número al activarse la tarjeta */
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.95rem;
+  color: #94a3b8;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+/* Clientes */
+/* Contenedor Base de la Sección */
+.clients-section {
+  padding: 80px 20px;
+  background: #0f172a; /* Mantiene la consistencia del fondo oscuro industrial */
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.clients-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.clients-section .section-badge {
+  background: rgba(255, 123, 0, 0.1);
+  border: 1px solid rgba(255, 123, 0, 0.2);
+  color: #ff7b00;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.clients-section .section-header h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-top: 15px;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid con habilitación de perspectiva */
+.clients-grid-3d {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1000px; /* Necesario para la distorsión tridimensional */
+}
+
+/* Tarjeta contenedora con profundidad */
+.client-card-3d {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 35px 20px; /* Reducimos ligeramente para dar más aire al logo */
+  cursor: pointer;
+  
+  /* Sistema de alineación para la tarjeta completa */
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* Centra todo el bloque horizontalmente */
+  justify-content: center;   /* Centra todo el bloque verticalmente */
+  gap: 20px;                 /* Separa de forma exacta el logo del texto inferior */
+}
+.client-logo-container {
+  width: 200%;             /* Obliga al contenedor a ocupar todo el ancho de la tarjeta */
+  height: 150px;            /* Define una altura fija estándar para que todos los logos se alineen igual */
+  
+  /* ---> Aquí está la magia del centrado <--- */
+  display: flex;
+  justify-content: center; /* Centra la imagen horizontalmente */
+  align-items: flex;     /* Centra la imagen verticalmente */
+  
+  /* Si estás usando los efectos 3D anteriores, mantén estas líneas: */
+  transform: translateZ(15px); 
+  transition: transform 0.3s ease;
+}
+
+/* Asegúrate también de que la imagen no se desborde y respete el centrado */
+.client-logo-container img {
+  max-width: 80%;          /* Evita que logos muy anchos rompan la tarjeta */
+  max-height: 100%;        /* Evita que logos muy altos deformen el diseño */
+  object-fit: contain;     /* Mantiene la proporción original del logo sin distorsionarlo */
+}
+/* Comportamiento Hover 3D (Efecto suspensión de placa) */
+.client-card-3d:hover {
+  transform: translateY(-8px) rotateX(8deg) rotateY(-4deg) translateZ(10px);
+  border-color: rgba(255, 123, 0, 0.3);
+  box-shadow: 
+    -10px 20px 35px rgba(0, 0, 0, 0.6),
+    0 0 15px rgba(255, 123, 0, 0.1);
+}
+
+/* Contenedor interno que empuja los elementos hacia afuera */
+.client-card-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  transform: translateZ(30px); /* Hace que el contenido flote sobre la base */
+  transition: transform 0.3s ease;
+}
+
+/* Iconos de Marca Minimalistas */
+.client-brand-icon {
+  color: #64748b;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.client-card-3d:hover .client-brand-icon {
+  color: #ff7b00;
+  transform: scale(1.1) translateZ(10px); /* El icono se acerca aún más al usuario */
+}
+
+/* Texto del Logo Corporativo */
+.client-brand-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+  transition: color 0.3s ease;
+}
+
+.client-card-3d:hover .client-brand-name {
+  color: #ffffff;
+}
+
+/* Noticias *//* Contenedor general */
+.news-section {
+  padding: 90px 20px;
+  background: #0f172a;
+  color: #ffffff;
+  font-family: 'Inter', sans-serif;
+}
+
+.news-section .section-header {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.news-section .section-badge {
+  background: rgba(255, 123, 0, 0.1);
+  border: 1px solid rgba(255, 123, 0, 0.3);
+  color: #ff7b00;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.news-section .section-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Grid preparado para Perspectiva */
+.news-grid-3d {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1200px;
+}
+
+/* Tarjeta Base con Atributos 3D */
+.news-card-3d {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.4) 0%, rgba(15, 23, 42, 0.6) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) translateZ(0px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease, border-color 0.3s;
+}
+
+/* Comportamiento de la Tarjeta Destacada (Ancho completo) */
+.news-card-3d.featured {
+  grid-column: span 2;
+  flex-direction: row;
+}
+
+/* Animación Global al hacer Hover */
+.news-card-3d:hover {
+  transform: translateY(-8px) rotateX(4deg) rotateY(-2deg) translateZ(10px);
+  border-color: rgba(255, 123, 0, 0.25);
+  box-shadow: -10px 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 123, 0, 0.08);
+}
+
+/* Wrapper de la Imagen para contener el desborde del zoom */
+.news-image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.news-card-3d.featured .news-image-wrapper {
+  width: 50%;
+  height: auto;
+  min-height: 340px;
+}
+
+.news-image {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.news-card-3d:hover .news-image {
+  transform: scale(1.06); /* Zoom fluido profesional */
+}
+
+/* Contenido de Texto Elevado en el Eje Z */
+.news-card-content {
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  transform: translateZ(30px); /* Desfasa el texto flotando sobre el contenedor */
+}
+
+.news-card-3d.featured .news-card-content {
+  width: 50%;
+  justify-content: center;
+}
+
+/* Metadatos (Categoría y Fecha) */
+.news-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.news-category {
+  background: rgba(255, 123, 0, 0.15);
+  color: #ff7b00;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.news-category.font-blue {
+  background: rgba(0, 163, 224, 0.15);
+  color: #00a3e0;
+}
+
+.news-category.font-green {
+  background: rgba(0, 153, 51, 0.15);
+  color: #00b33c;
+}
+
+.news-date {
+  font-size: 0.85rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.meta-icon {
+  color: #475569;
+}
+
+/* Encabezados y Párrafos */
+.news-card-content h3 {
+  font-size: 1.35rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #ffffff;
+  margin-bottom: 12px;
+  transition: color 0.3s;
+}
+
+.news-card-3d.featured .news-card-content h3 {
+  font-size: 1.65rem;
+}
+
+.news-card-3d:hover h3 {
+  color: #ff7b00;
+}
+
+.news-card-content p {
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.6;
+  margin-bottom: 25px;
+  flex-grow: 1;
+}
+
+/* Enlace/Botón dinámico estilo e-learning/corporate */
+.news-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  width: max-content;
+  margin-top: auto;
+  transition: color 0.3s ease;
+}
+
+.arrow-icon {
+  color: #ff7b00;
+  transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.news-link:hover {
+  color: #ff7b00;
+}
+
+.news-link:hover .arrow-icon {
+  transform: translateX(6px); /* El icono se mueve solo al hacer hover */
+}
+
+/* Responsivo para móviles */
+@media (max-width: 768px) {
+  .news-grid-3d {
+    grid-template-columns: 1fr;
+  }
+  .news-card-3d.featured {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+  .news-card-3d.featured .news-image-wrapper,
+  .news-card-3d.featured .news-card-content {
+    width: 100%;
+  }
+}
+/* Contacto */
+/* ==========================================
+   SECCIÓN DE CONTACTO PROFESIONAL
+   ========================================== */
+.contact-section {
+  position: relative;
+  padding: 100px 20px;
+  background: radial-gradient(circle at bottom left, #1e293b 0%, #0f172a 100%);
+  font-family: 'Inter', sans-serif;
+  color: #ffffff;
+}
+
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto;
+  perspective: 1000px;
+}
+
+/* Bloque Izquierdo: Info de Contacto */
+.contact-info-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.info-card-3d {
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transform-style: preserve-3d;
+  transition: transform 0.3s ease, border-color 0.3s ease, background 0.3s ease;
+}
+
+.info-card-3d:hover {
+  transform: translateZ(15px) translateX(5px);
+  border-color: rgba(255, 123, 0, 0.25);
+  background: rgba(30, 41, 59, 0.6);
+}
+
+.info-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background: #0f172a;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.info-icon-svg {
+  color: #94a3b8;
+  transition: color 0.3s ease;
+}
+
+.info-card-3d:hover .info-icon-svg {
+  color: #ff7b00;
+}
+
+.info-text h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.info-text p {
+  font-size: 0.9rem;
+  color: #94a3b8;
+}
+
+/* Bloque Derecho: Formulario Estilo Panel */
+.contact-form-3d {
+  background: linear-gradient(135deg, rgba(30, 41, 59, 0.5) 0%, rgba(15, 23, 42, 0.7) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 24px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-form-3d input, 
+.contact-form-3d textarea {
+  width: 100%;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 14px 18px;
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-form-3d input:focus, 
+.contact-form-3d textarea:focus {
+  outline: none;
+  border-color: #ff7b00;
+  box-shadow: 0 0 10px rgba(255, 123, 0, 0.15);
+}
+
+.form-submit-btn {
+  background: #ff7b00;
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-left: auto;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.form-submit-btn:hover {
+  background: #e06c00;
+  transform: translateY(-2px);
+}
+
+/* ==========================================
+   FOOTER PREMIUM NO-EMOJIS
+   ========================================== */
+.footer-section {
+  background: #090d16;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 70px 20px 30px;
+  font-family: 'Inter', sans-serif;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr;
+  gap: 50px;
+  max-width: 1200px;
+  margin: 0 auto 50px;
+}
+
+.footer-brand-block h4,
+.footer-links-block h4,
+.footer-social-block h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 0.5px;
+}
+
+.footer-brand-block p {
+  color: #64748b;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer-links-block ul {
+  list-style: none;
+}
+
+.footer-links-block ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links-block ul li a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
+}
+
+.footer-links-block ul li a:hover {
+  color: #ff7b00;
+}
+
+/* Malla de Redes Sociales Vectoriales */
+.social-links-grid {
+  display: flex;
+  gap: 12px;
+}
+
+.social-icon-btn {
+  width: 40px;
+  height: 40px;
+  background: rgba(30, 41, 59, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.social-icon-btn:hover {
+  background: #ff7b00;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(255, 123, 0, 0.3);
+}
+
+/* Barra inferior de Copyright */
+.footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.85rem;
+  color: #475569;
+}
+/* Estilos base del botón hamburguesa (Oculto en pantallas grandes) */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  z-index: 1001; /* Asegura que quede por encima del menú desplegable */
+}
+
+.menu-toggle .bar {
+  width: 100%;
+  height: 3px;
+  background-color: #ffffff; /* Cambia al color de tu texto/logo */
+  border-radius: 7px;
+  transition: all 0.3s ease-in-out;
+}
+
+/* --- ANIMACIÓN DE HAMBURGUESA A "X" AL ABRIRSE --- */
+.menu-toggle.open .bar:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.menu-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.open .bar:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
+/* --- RESPONSIVO (MÓVILES) --- */
+@media screen and (max-width: 768px) {
+  /* Mostramos el botón de hamburguesa */
+  .menu-toggle {
+    display: flex;
+  }
+
+  /* Transformamos la lista ul en un menú desplegable de pantalla completa o lateral */
+  .nav-links {
+    position: fixed;
+    right: -100%; /* Escondido por defecto a la derecha */
+    top: 0;
+    height: 100vh;
+    width: 70%; /* Ocupa el 70% del ancho del celular */
+    background-color: #1a1a1a; /* Fondo oscuro acorde al diseño petrolero */
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    transition: right 0.4s ease-in-out;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  /* Cuando el menú está activo, se desliza hacia adentro */
+  .nav-links.nav-active {
+    right: 0;
+  }
+
+  .nav-links li {
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-links a {
+    font-size: 1.2rem;
+    display: block;
+    padding: 10px 0;
+  }
+}
+@media screen and (max-width: 768px) {
+  .nav-links {
+    display: flex !important; /* Fuerza a que se comporte como flexbox en móvil */
+    position: fixed !important; /* Asegura que se mueva de forma flotante */
+    right: -100%; 
+    top: 0;
+    height: 100vh;
+    width: 70%; 
+    background-color: #1a1a1a; 
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 25px;
+    transition: right 0.4s ease-in-out;
+    z-index: 1000;
+  }
+
+  /* Asegúrate de que la clase activa tenga el mismo peso o más */
+  .nav-links.nav-active {
+    right: 0 !important; /* Fuerza a que aparezca en la pantalla */
+  }
+}
+/* Responsivo */
+@media (max-width: 900px) 
+{
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .banner-title {
+    font-size: 3rem;
+  }
+  
+  .news-card.featured {
+    grid-column: span 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  
+  .banner-title {
+    font-size: 2.5rem;
+  }
+  
+  .banner-subtitle {
+    font-size: 1.1rem;
+  }
+  
+  .banner-content {
+    padding-left: 5%;
+  }
+  
+  .banner-animation {
+    right: 5%;
+    transform: scale(0.7);
+  }
+  
+  .banner-buttons {
+    flex-direction: column;
+  }
+  
+  .section-header h2 {
+    font-size: 2rem;
+  }
+  
+  .stats-container {
+    gap: 2rem;
+  }
+  
+  .stat-item {
+    min-width: 150px;
+  }
+  
+  .contact-form {
+    min-width: 100%;
+  }
+  
+  .form-row {
+    flex-direction: column;
+  }
+  
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .social-links {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-title {
+    font-size: 2rem;
+  }
+  
+  .banner-animation {
+    display: none;
+  }
+  
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  @media screen and (max-width: 768px) {
+  
+  /* --- Ajustes Globales de Contenedores --- */
+  section {
+    padding: 40px 15px !important; /* Reduce los espacios gigantes arriba y abajo */
+  }
+
+  /* --- Encabezados de Sección --- */
+  .section-header {
+    margin-bottom: 25px !important;
+    padding: 0 10px !important;
+  }
+  
+  .section-header h2 {
+    font-size: 1.6rem !important; /* Reduce el tamaño del título principal */
+    letter-spacing: normal !important;
+  }
+
+  .section-badge {
+    font-size: 0.75rem !important;
+    padding: 4px 10px !important;
+  }
+
+  .section-description {
+    font-size: 0.9rem !important;
+    margin-top: 8px !important;
+  }
+
+  /* --- 1. Sección de Servicios --- */
+  .services-grid {
+    grid-template-columns: 1fr !important;
+    gap: 15px !important;
+    width: 100% !important;
+    max-width: 100% !important; /* Asegura que no se desborde */
+    padding: 0 !important;
+  }
+
+  .service-card-3d {
+    width: 100% !important;
+    box-sizing: border-box;
+    transform: none !important;
+  }
+  
+  .card-content {
+    padding: 20px !important; /* Espaciado interno más pequeño */
+  }
+
+  .card-content h3 {
+    font-size: 1.2rem !important;
+  }
+
+  .card-content p, .service-features li {
+    font-size: 0.85rem !important; /* Texto más legible y compacto */
+  }
+
+  /* --- 2. Sección Trayectoria (Estadísticas) --- */
+  .stats-container {
+    grid-template-columns: 1fr !important; /* Apilados individuales */
+    gap: 15px !important;
+    padding: 0 !important;
+  }
+
+  .stat-item-3d {
+    padding: 15px !important;
+    gap: 15px !important;
+  }
+
+  .stat-number {
+    font-size: 1.8rem !important; /* Números más pequeños */
+    line-height: 1 !important;
+  }
+
+  .stat-label {
+    font-size: 0.85rem !important;
+  }
+
+  /* --- 3. Sección de Clientes --- */
+  .clients-grid-3d {
+    grid-template-columns: repeat(2, 1fr) !important; /* 2 por fila bien encuadrados */
+    gap: 10px !important;
+  }
+  
+  .client-card-3d {
+    padding: 10px !important;
+  }
+
+  .client-real-logo {
+    max-height: 195px !important; /* Achica los logos de las empresas */
+    width: auto !important;
+    object-fit: contain;
+  }
+
+  .client-brand-name {
+    font-size: 0.8rem !important;
+  }
+
+  /* --- 4. Sección de Noticias --- */
+  .news-grid-3d {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    padding: 0 !important;
+  }
+
+  .news-card-content {
+    padding: 15px !important;
+  }
+
+  .news-card-content h3 {
+    font-size: 1.15rem !important;
+  }
+
+  .news-card-content p {
+    font-size: 0.85rem !important;
+  }
+
+  /* --- 5. Sección de Contacto --- */
+  .contact-container {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+    padding: 0 !important;
+  }
+
+  .contact-info-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  .info-card-3d {
+    padding: 12px !important;
+  }
+
+  .info-text h4 {
+    font-size: 0.95rem !important;
+  }
+
+  .info-text p {
+    font-size: 0.85rem !important;
+  }
+
+  .contact-form-3d {
+    padding: 20px 15px !important;
+    margin: 0 !important; /* Elimina márgenes que tiran el formulario hacia afuera */
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  .input-group input, .input-group textarea {
+    padding: 10px !important;
+    font-size: 0.9rem !important;
+  }
+
+  /* --- 6. Footer --- */
+  .footer-content {
+    grid-template-columns: 1fr !important;
+    gap: 25px !important;
+  }
+
+  .footer-brand-block p {
+    font-size: 0.85rem !important;
+    line-height: 1.5 !important;
+  }
+}
+}
