@@ -120,7 +120,7 @@ const videoRef = useRef(null);
         onEnded={handleVideoEnd}
         className="banner-video-bg"
       >
-        <source src="/videos/industrial-background.mp4" type="video/mp4" />
+        <source src="./videos/industrial-background.mp4" type="video/mp4" />
         {/* Puedes añadir un fallback de imagen aquí por si el video no carga */}
         Tu navegador no soporta videos en segundo plano.
       </video>
