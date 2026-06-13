@@ -120,7 +120,7 @@ const videoRef = useRef(null);
         onEnded={handleVideoEnd}
         className="banner-video-bg"
       >
-        <source src="/videos/industrial-background.mp4" type="video/mp4" />
+        <source src="videos/industrial-background.mp4" type="video/mp4" />
         {/* Puedes añadir un fallback de imagen aquí por si el video no carga */}
         Tu navegador no soporta videos en segundo plano.
       </video>
@@ -325,7 +325,7 @@ const videoRef = useRef(null);
           <div className="client-card-inner">
             <div className="client-logo-container">
               <img 
-                src="/images/logos/chevron1.png" 
+                src="images/logos/chevron1.png" 
                 alt="Logo Chevron" 
                 className="client-real-logo logo-chevron"
               />
@@ -339,7 +339,7 @@ const videoRef = useRef(null);
           <div className="client-card-inner">
             <div className="client-logo-container">
               <img 
-                src="/images/logos/slb1.png" 
+                src="images/logos/slb1.png" 
                 alt="Logo SLB Schlumberger" 
                 className="client-real-logo logo-slb"
               />
@@ -353,7 +353,7 @@ const videoRef = useRef(null);
           <div className="client-card-inner">
             <div className="client-logo-container">
               <img 
-                src="/images/logos/bp.png" 
+                src="images/logos/bp.png" 
                 alt="Logo BP" 
                 className="client-real-logo logo-bp"
               />
@@ -367,7 +367,7 @@ const videoRef = useRef(null);
           <div className="client-card-inner">
             <div className="client-logo-container">
               <img 
-                src="/images/logos/halliburton.png" 
+                src="images/logos/halliburton.png" 
                 alt="Logo Halliburton" 
                 className="client-real-logo logo-halliburton"
               />
